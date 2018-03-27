@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>智能交通虚拟仿真软件-环境检测</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<style>
+			.manual dd{
+				width: 45px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">智能交通虚拟仿真软件</div>
+		<div class="w1200 clearfix homepage streetlight etc park">
+			<section class="fl clearfix left_con">
+				<i class="up_line"></i>
+				<i class="down_line"></i>
+				<div class="etc_box pr">
+					<img src="images/park1.png" />
+					<!--进库车-->
+					<i class="park_car"></i>
+					<!--出库车-->
+					<i class="park_out_car"></i>
+					<!--左右闸门-->
+					<i class="left_pole"></i>
+					<i class="right_pole"></i>
+					<!--/左右闸门-->
+					<!--车库-->
+					<div class="carport_box">
+						<div class="empty_box">
+							<!--左侧车库-->
+							<i class="empty_up_car"></i>
+							<i class="empty_down_car"></i>
+							<!--/左侧车库-->
+						</div>
+						<div class="empty_middle_box">
+							<!--中间车库-->
+							<i class="empty_mup_car"></i>
+							<i class="empty_mdown_car"></i>
+							<!--/中间车库-->
+						</div>
+						<div class="empty_right_box">
+							<!--右侧车库-->
+							<i class="empty_rup_car"></i>
+							<i class="empty_rdown_car"></i>
+							<!--/右侧车库-->
+						</div>
+
+					</div>
+					<!--/车库-->
+				</div>
+				<div class="pr">
+					<img src="images/etc2.jpg" style="margin-top: 50px;"/>
+					<i class="etc_pay_car "></i>
+				</div>
+			</section>
+			<section class="fr right_con">
+				<div class="title">
+					<a class="back fl"></a>
+					<span>智能停车场</span>
+				</div>
+				<div class="control clearfix">
+					<div class="manual">
+						<dl class="clearfix">
+							<dd class="chepai">1</dd>
+							<dd>2</dd>
+							<dd>3</dd>
+							<dd>4</dd>
+							<dd>5</dd>
+							<dd>6</dd>
+							<br />
+							<dt>
+								<p class="fl">车牌号：000001</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000002</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000003</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000004</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000005</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000006</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+						</dl>
+						<div class="menu2">
+							<a class="mr20">进入沙盘</a>
+							<a>退出沙盘</a>
+							<a class="mr20 mt20 enter_state">进入充值状态</a>
+							<a class="mt20 exit_state">退出充值状态</a>
+						</div>
+					</div>
+				</div>				
+			</section>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+        	$(".control li").click(function(){
+		        $(".control li").eq($(this).index()).addClass("button_on").siblings().removeClass('button_on');
+				$(".control>div").hide().eq($(this).index()).show();
+			});
+			$(".manual .control_b").click(function(){
+				$(this).toggleClass("off");
+			});
+			$(".manual dd").click(function(){
+		        $(".manual dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".manual dt").hide().eq($(this).index()).show();
+			});
+			$(".auto dd").click(function(){
+		        $(".auto dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".auto dt").hide().eq($(this).index()).show();
+			});
+			/*充值*/
+			//进入充值
+			$('.enter_state').on('click',function(){
+				$('.etc_pay_car').show();
+			})
+			//退出充值
+			$('.exit_state').on('click',function(){
+				$('.etc_pay_car').hide();
+			})
+			/*小车进库*/
+
+			function park_car_play(){
+				var $car = $('.park_car');
+				$car.animate({"opacity":"1"},1000);
+				//小车横向运动
+				$car.animate({"left":"665px"},3000);
+				//小车转弯
+				$car.animate({deg:90},{step:function(n,fx){
+					$(this).css({"transform":"rotate("+n+"deg)"});
+				},duration:1000
+				});
+				//小车进库过闸
+				$car.animate({"top":"375px"},{step:function(){
+					var that = this;
+					var $right_pole = $('.right_pole');
+					if(parseInt(that.style.top)>=80&&parseInt(that.style.top)<=280){
+						$right_pole.addClass('hover');
+					}else if(parseInt(that.style.top)>=300){
+						$right_pole.removeClass('hover');
+					}
+				},duration:5000
+				})
+				//小车转弯
+				$car.animate({deg:180},{step:function(n,fx){
+					$(this).css({"transform":"rotate("+n+"deg)"});
+				},duration:1000
+				});
+				var $left = 0;//小车停到最右车库
+				var $middle = 1;//小车停到中间车库
+				var $right = 2;//小车停到最左车库
+				switch ($left){
+					case 0:
+						$car.animate({"left":"395px"},4000);
+						$car.animate({deg:270},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"opacity":"0"},1000);
+						$car.animate({"left":"10px","top":"20px"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+					case 1:
+						$car.animate({"left":"305px"},4000);
+						$car.animate({deg:270},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"opacity":"0"},1000);
+						$car.animate({"left":"10px","top":"20px"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+					case 2:
+						$car.animate({"left":"215px"},4000);
+						$car.animate({deg:270},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"opacity":"0"},1000);
+						$car.animate({"left":"10px","top":"20px"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+				}
+			}
+			setInterval(park_car_play,100);
+			/*小车出库*/
+			function come_out(car){
+				var $car = car;
+				$car.animate({"opacity":"1"},2000);
+				$car.animate({deg:90},{step:function(n,fx){
+					$(this).css({"transform":"rotate("+n+"deg)"});
+				},duration:2000
+				});
+			}
+			function park_out_play(){
+				var $car = $('.park_out_car');
+				var $right = 0;//小车出最右车库
+				var $middle = 1;//小车出中间车库
+				var $left = 2;//小车出最左车库
+				var $left_pole = $('.left_pole');
+				switch ($right){
+					case 0:
+						come_out($car);
+						$car.animate({"left":"20px"},3000);
+						$car.animate({deg:180},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"top":"-100px"},{step:function(){
+							var that = this;
+							if(parseInt(that.style.top)>=105&&parseInt(that.style.top)<=245){
+								$left_pole.addClass("hover");
+							}else if(parseInt(that.style.top)<=50){
+								$left_pole.removeClass("hover");
+							}
+						},duration:5000
+						});
+						$car.animate({"opacity":"0"});
+						$car.animate({"left":"395px","top":"363px"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+					case 1:
+						$car.css({'left':"315px"});
+						come_out($car);
+						$car.animate({"left":"20px"},3000);
+						$car.animate({deg:180},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"top":"-100px"},{step:function(){
+							var that = this;
+							if(parseInt(that.style.top)>=105&&parseInt(that.style.top)<=245){
+								$left_pole.addClass("hover");
+							}else if(parseInt(that.style.top)<=50){
+								$left_pole.removeClass("hover");
+							}
+						},duration:5000
+						});
+						$car.animate({"left":"315px","top":"363px"});
+						$car.animate({"opacity":"0"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+					case 2:
+						$car.css('left',"225px");
+						come_out($car);
+						$car.animate({"left":"20px"},3000);
+						$car.animate({deg:180},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						},duration:1000
+						});
+						$car.animate({"top":"-100px"},{step:function(){
+							var that = this;
+							if(parseInt(that.style.top)>=105&&parseInt(that.style.top)<=245){
+								$left_pole.addClass("hover");
+							}else if(parseInt(that.style.top)<=50){
+								$left_pole.removeClass("hover");
+							}
+						},duration:5000
+						});
+						$car.animate({"left":"225px","top":"363px"});
+						$car.animate({"opacity":"0"});
+						$car.animate({deg:0},{step:function(n,fx){
+							$(this).css({"transform":"rotate("+n+"deg)"});
+						}
+						});
+						break;
+				}
+			}
+			setInterval(park_out_play);
+			var $carport = $('.empty_box');//空车库
+			//车库向下移动
+			function carport_down_move(carport){
+				var $carport = carport;
+				$carport.css({"top":"49px"});
+				$carport.show().animate({"top":"146px"},5000);
+				$('.empty_box').find('i').eq(0).show();
+			}
+			carport_down_move($carport);
+			/*carport_down_move($carport_3);*/
+			//车库向上移动
+			function carport_up_move(carport){
+				var $carport = carport;
+				$carport.css({"top":"146px"});
+				$carport.show().animate({"top":"49px"},5000);
+			}
+			carport_up_move($carport)
+			//车库先下后上
+			function carport_up_down_move(carport){
+				var $carport = carport;
+				$carport.animate({"top":"49px"},0);
+				$carport.show().animate({"top":"146px"},5000);
+				$carport.show().animate({"top":"49px"},5000);
+			}
+			setInterval(function(){carport_up_down_move($carport)},1000);
+		});
+	</script>
+</html>

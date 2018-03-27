@@ -1,0 +1,384 @@
+@charset "utf-8";
+/*通用*/
+/*@base-font-color:;*/
+/*智能茶水柜*/
+.w560 {
+  width: 560px;
+}
+.t-title-bar {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background-color: #28cbdc;
+  text-align: center;
+}
+.t-title-bar span {
+  font-size: 12px;
+  color: #fff;
+}
+.t-number {
+  margin: 40px 50px;
+}
+.t-number > p,
+.t-pattern > p {
+  font-size: 20px;
+  color: #333;
+}
+.t-number-list,
+.t-patter-list {
+  margin-top: 20px;
+}
+.t-number-list li,
+.t-patter-list li {
+  float: left;
+  margin-right: 80px;
+}
+.t-number-list li + li + li,
+.t-patter-list li + li + li {
+  margin-right: 0;
+}
+.t-number-list li a {
+  display: inline-block;
+  width: 98px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 16px;
+  color: #28cbdc;
+  border: 1px solid #28cbdc;
+}
+.t-number-list li a:hover {
+  color: #fff;
+  background-color: #28cbdc;
+}
+.t-pattern {
+  margin: 0 50px;
+}
+.t-patter-list li .t-icon {
+  margin-top: 20px;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  background: url(../images/home/icon-1.png) no-repeat;
+}
+.t-patter-list li a {
+  display: block;
+  width: 98px ;
+  height: 108px;
+  border: 1px solid #28cbdc;
+  text-align: center;
+}
+.t-patter-list li a .t-icon-1 {
+  background-position: -2px -45px;
+}
+.t-patter-list li a .t-icon-2 {
+  background-position: -45px -45px;
+}
+.t-patter-list li a .t-icon-3 {
+  background-position: -88px -45px;
+}
+.t-patter-list li a p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #28cbdc;
+}
+.t-patter-list li a:hover {
+  background-color: #28cbdc;
+}
+.t-patter-list li a:hover .t-icon-1 {
+  background-position: -2px -2px;
+}
+.t-patter-list li a:hover .t-icon-2 {
+  background-position: -45px -2px;
+}
+.t-patter-list li a:hover .t-icon-3 {
+  background-position: -88px -2px;
+}
+.t-patter-list li a:hover p {
+  color: #fff;
+}
+/*智能电视*/
+.tv-main .tv-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/home/icon-1.png");
+}
+.tv-operate {
+  margin: 40px 50px;
+}
+.tv-default {
+  background-position: -131px -2px;
+}
+.tv-default:hover {
+  background-position: -131px -47px;
+}
+.tv-operate-l {
+  margin-right: 150px;
+}
+.tv-operate-l p:first-child {
+  margin-bottom: 78px;
+}
+.tv-operate-l .tv-icon-1 {
+  background-position: -176px -2px;
+}
+.tv-operate-l .tv-icon-1:hover {
+  background-position: -176px -47px;
+}
+.tv-operate-l .tv-icon-2 {
+  background-position: -2px -88px;
+}
+.tv-operate-l .tv-icon-2:hover {
+  background-position: -2px -133px;
+}
+.tv-operate-m .tv-ok {
+  display: block;
+  width: 108px;
+  height: 108px;
+  background: url(../images/home/ok.png) no-repeat;
+}
+.tv-operate-m .tv-icon-top,
+.tv-operate-m .tv-icon-right,
+.tv-operate-m .tv-icon-bottom,
+.tv-operate-m .tv-icon-left {
+  position: absolute;
+  display: block;
+  width: 0 ;
+  height: 0;
+}
+.tv-operate-m .tv-icon-top {
+  top: 11px;
+  left: 47px;
+  border-left: 8.5px solid transparent;
+  border-right: 8.5px solid transparent;
+  border-bottom: 9px solid #28cbdc;
+}
+.tv-operate-m .tv-icon-top:hover {
+  border-bottom-color: #a9eaf1;
+}
+.tv-operate-m .tv-icon-right {
+  top: 46px;
+  left: 88px;
+  border-left: 9px solid #28cbdc;
+  border-top: 8.5px solid transparent;
+  border-bottom: 8.5px solid transparent;
+}
+.tv-operate-m .tv-icon-right:hover {
+  border-left-color: #a9eaf1;
+}
+.tv-operate-m .tv-icon-bottom {
+  top: 88px;
+  left: 47px;
+  border-left: 8.5px solid transparent;
+  border-top: 9px solid #28cbdc;
+  border-right: 8.5px solid transparent;
+}
+.tv-operate-m .tv-icon-bottom:hover {
+  border-top-color: #a9eaf1;
+}
+.tv-operate-m .tv-icon-left {
+  top: 46px;
+  left: 11px;
+  border-bottom: 8.5px solid transparent;
+  border-top: 8.5px solid transparent;
+  border-right: 9px solid #28cbdc;
+}
+.tv-operate-m .tv-icon-left:hover {
+  border-right-color: #a9eaf1;
+}
+.tv-operate-m .tv-icon-ok {
+  position: absolute;
+  left: 34px;
+  top: 34px;
+  width: 40px;
+  height: 40px;
+  background-position: -135px -90px;
+}
+.tv-operate-m .tv-icon-ok:hover {
+  background-position: -135px -131px;
+}
+.tv-operate-m .tv-home {
+  margin: 15px 0 0 32px;
+}
+.tv-operate-m .tv-home .tv-icon-home {
+  background-position: -47px -88px;
+}
+.tv-operate-m .tv-home .tv-icon-home:hover {
+  background-position: -46px -133px;
+}
+.tv-operate-r .tv-icon-omit {
+  background-position: -221px -2px;
+}
+.tv-operate-r .tv-icon-omit:hover {
+  background-position: -221px -47px;
+}
+.tv-operate-r p:first-child {
+  margin-bottom: 78px;
+}
+.tv-operate-r .tv-icon-pause {
+  background-position: -92px -88px;
+}
+.tv-operate-r .tv-icon-pause:hover {
+  background-position: -92px -133px;
+}
+.tv-volume-box,
+.tv-channel-box {
+  margin-left: 120px;
+}
+.tv-volume-box .tv-volume-top,
+.tv-channel-box .tv-volume-top,
+.tv-volume-box .tv-channel-top,
+.tv-channel-box .tv-channel-top {
+  position: relative;
+  display: block;
+  margin-bottom: 1px;
+  width: 92px;
+  height: 20px;
+  background-color: #28cbdc;
+  border-radius: 12px 12px 0 0;
+}
+.tv-volume-box .tv-volume-top:hover,
+.tv-channel-box .tv-volume-top:hover,
+.tv-volume-box .tv-channel-top:hover,
+.tv-channel-box .tv-channel-top:hover {
+  background-color: #a9eaf1;
+}
+.tv-volume-box .tv-volume-top:after,
+.tv-channel-box .tv-volume-top:after,
+.tv-volume-box .tv-channel-top:after,
+.tv-channel-box .tv-channel-top:after {
+  content: "";
+  position: absolute;
+  left: 41px;
+  top: 7px;
+  display: block;
+  width: 10px ;
+  height: 7px;
+  background: url(../images/home/icon-1.png) no-repeat -182px -91px;
+}
+.tv-volume-box .tv-volume-bottom,
+.tv-channel-box .tv-volume-bottom,
+.tv-volume-box .tv-channel-bottom,
+.tv-channel-box .tv-channel-bottom {
+  position: relative;
+  display: block;
+  width: 92px;
+  height: 20px;
+  background-color: #28cbdc;
+  border-radius: 0 0 12px 12px;
+}
+.tv-volume-box .tv-volume-bottom:hover,
+.tv-channel-box .tv-volume-bottom:hover,
+.tv-volume-box .tv-channel-bottom:hover,
+.tv-channel-box .tv-channel-bottom:hover {
+  background-color: #a9eaf1;
+}
+.tv-volume-box .tv-volume-bottom:after,
+.tv-channel-box .tv-volume-bottom:after,
+.tv-volume-box .tv-channel-bottom:after,
+.tv-channel-box .tv-channel-bottom:after {
+  content: "";
+  position: absolute;
+  left: 41px;
+  top: 7px;
+  display: block;
+  width: 13px ;
+  height: 7px;
+  background: url(../images/home/icon-1.png) no-repeat -197px -91px;
+}
+.tv-volume-box .tv-volume-icon,
+.tv-channel-box .tv-volume-icon {
+  margin: 15px 0 0 33px;
+  width: 28px;
+  height: 8px;
+  background: url(../images/home/icon-1.png) no-repeat -181px -104px;
+}
+.tv-channel-box {
+  margin-left: 40px;
+}
+.tv-channel-box .tv-channel-text {
+  margin: 15px 0 0 33px;
+  font-size: 12px ;
+  color: #28cbdc;
+}
+/*智能空调*/
+.ac-text {
+  position: absolute;
+  top: 77px;
+  right: 106px;
+  text-align: center;
+  width: 88px;
+  z-index: 99;
+}
+.ac-text li {
+  font-size: 12px;
+  color: #fff;
+}
+.ac-text li:first-child + li {
+  font-size: 40px;
+  line-height: 1.5;
+}
+.ac-box {
+  margin: 40px 50px;
+}
+.ac-box li {
+  margin-right: 80px;
+  margin-bottom: 30px;
+}
+.ac-box li:first-child + li + li {
+  margin-right: 0;
+}
+.ac-box .ac-btn-1,
+.ac-box .ac-btn-2,
+.ac-box .ac-btn-3,
+.ac-box .ac-btn-4,
+.ac-box .ac-btn-5 {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #a9eaf1;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+.ac-box .ac-btn-1:hover,
+.ac-box .ac-btn-4:hover,
+.ac-box .ac-btn-5:hover,
+.ac-box .ac-btn-2:hover,
+.ac-box .ac-btn-3:hover {
+  color: #fff;
+  background-color: #28cbdc;
+}
+.ac-box .ac-btn-2:after {
+  content: "";
+  position: absolute;
+  left: 38px;
+  top: 12px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 15px solid #4c4c4c;
+}
+.ac-box .ac-btn-2:hover:after {
+  border-bottom-color: #fff ;
+}
+.ac-box .ac-btn-3:after {
+  content: "";
+  position: absolute;
+  left: 38px;
+  top: 12px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 15px solid #4c4c4c;
+}
+.ac-box .ac-btn-3:hover:after {
+  border-top-color: #fff ;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>智能交通虚拟仿真软件-环境检测</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<link rel="stylesheet" type="text/css"
+		      href="http://codeseven.github.io/toastr/build/toastr.min.css">
+		<script type="text/javascript"
+		        src="http://codeseven.github.io/toastr/build/toastr.min.js"></script>
+
+	</head>
+	<body>
+		<div class="head">智能交通虚拟仿真软件</div>
+		<div class="w1200 clearfix homepage streetlight etc">
+			<section class="fl clearfix left_con">
+				<i class="up_line"></i>
+				<i class="down_line"></i>
+				<div class="etc_box">
+					<img src="images/etc1.png" />
+					<i class="left_pole"></i>
+					<i class="right_pole"></i>
+					<p class="etc_car_box">
+						<i class="red_car_icon etc_car"></i>
+					</p>
+				</div>
+				<div class="pr">
+					<img src="images/etc2.jpg" style="margin-top: 50px;"/>
+					<i class="etc_pay_car"></i>
+				</div>
+			</section>
+			<section class="fr right_con">
+				<div class="title">
+					<a class="back fl"></a>
+					<span>ETC收费系统</span>
+				</div>
+				<div class="control clearfix">
+					<div class="manual">
+						<dl class="clearfix">
+							<dd class="chepai">1</dd>
+							<dd>2</dd>
+							<dd>3</dd>
+							<br />
+							<dt>
+								<p class="fl">车牌号：000001</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000002</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000003</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+						</dl>
+						<div class="menu2">
+							<a class="mr20 enter_sand_table">进入沙盘</a>
+							<a>退出沙盘</a>
+							<a class="mr20 mt20 enter_btn">进入充值状态</a>
+							<a class="mt20 exit_btn">退出充值状态</a>
+						</div>
+					</div>
+				</div>				
+			</section>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+        	$(".control li").click(function(){
+		        $(".control li").eq($(this).index()).addClass("button_on").siblings().removeClass('button_on');
+				$(".control>div").hide().eq($(this).index()).show();
+			});
+			$(".manual .control_b").click(function(){
+				$(this).toggleClass("off");
+			});
+			$(".manual dd").click(function(){
+		        $(".manual dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".manual dt").hide().eq($(this).index()).show();
+			});
+			$(".auto dd").click(function(){
+		        $(".auto dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".auto dt").hide().eq($(this).index()).show();
+			});
+			/*etc*/
+			function etc_car(){
+				var $etc_car = $('.etc_car_box .etc_car');
+				$etc_car.animate({"left":"670px"},4000);
+				$etc_car.animate({deg:90},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:1000
+				})
+				$etc_car.animate({"top":"380px"},{duration:6000,step:function(){
+					var that = this;
+					if(parseInt(that.style.top)<=100&&parseInt(that.style.top)>=80){
+						$('.right_pole').addClass('hover');
+					}else if(parseInt(that.style.top)<=340&&parseInt(that.style.top)>=220){
+						$('.right_pole').removeClass('hover');
+					}
+				}})
+				$etc_car.animate({deg:180},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+					},duration:1000
+				})
+				$etc_car.animate({"left":"2px"},4000);
+				$etc_car.animate({deg:270},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:2000
+				})
+				$etc_car.animate({"top":"15px"},{duration:6000,step:function(){
+					var that = this;
+					if(parseInt(that.style.top)<=270&&parseInt(that.style.top)>=220){
+						$('.left_pole').addClass('hover');
+					}else if(parseInt(that.style.top)<=50){
+						$('.left_pole').removeClass('hover');
+					}
+				}})
+				$etc_car.animate({deg:360},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:1000
+				})
+				$etc_car.animate({deg:0},{
+					step:function(n,fx){
+						$(this).css('transform','rotate('+n+'deg)');
+					},
+					duration:0
+				})
+			}
+			var one = 1000;
+			setInterval(function etc_car(one)
+			{
+				var $etc_car = $('.etc_car_box .etc_car');
+				$etc_car.animate({"left":"670px"},4000);
+				$etc_car.animate({deg:90},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:1000
+				})
+				$etc_car.animate({"top":"380px"},{duration:6000,step:function(){
+					var that = this;
+					if(parseInt(that.style.top)<=100&&parseInt(that.style.top)>=80){
+						$('.right_pole').addClass('hover');
+					}else if(parseInt(that.style.top)<=340&&parseInt(that.style.top)>=220){
+						$('.right_pole').removeClass('hover');
+					}
+				}})
+				$etc_car.animate({deg:180},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:1000
+				})
+				$etc_car.animate({"left":"2px"},4000);
+				$etc_car.animate({deg:270},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:2000
+				})
+				$etc_car.animate({"top":"15px"},{duration:6000,step:function(){
+					var that = this;
+					if(parseInt(that.style.top)<=270&&parseInt(that.style.top)>=220){
+						$('.left_pole').addClass('hover');
+					}else if(parseInt(that.style.top)<=50){
+						$('.left_pole').removeClass('hover');
+					}
+				}})
+				$etc_car.animate({deg:360},{step:function(n,fx){
+					$(this).css({'transform':'rotate('+n+'deg)'});
+				},duration:1000
+				})
+				$etc_car.animate({deg:0},{
+					step:function(n,fx){
+						$(this).css('transform','rotate('+n+'deg)');
+					},
+					duration:0
+				})
+			},1000);
+			//进入充值
+			$('.enter_btn').on('click',function(){
+				$('.etc_pay_car').show();
+			})
+			//退出充值
+			$('.exit_btn').on('click',function(){
+				$('.etc_pay_car').hide();
+			})
+		});
+
+		toastr.options = {
+			"positionClass":"toast-bottom-right",
+			"timeOut": "10000"
+		}
+		Command: toastr["success"]("ffgg", "zzz");
+		Command: toastr["warning"]("ffgg", "zzz");
+	</script>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>智能交通虚拟仿真软件-环境检测</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/jquery-1.7.1.min.js"></script>		
+	</head>
+	<body>
+		<div class="head">智能交通虚拟仿真软件</div>
+		<div class="w1200 clearfix homepage streetlight ">
+			<!--手动-->
+			<section class="fl clearfix left_con pr hand_toggle">
+				<p>
+					<i class="red_car_icon"></i>
+				</p>
+				<div class="dormitory_box">
+					<i class="dormitory_img_1 "></i>
+				</div>
+				<div class="playground_box">
+					<i class="playground_img_1 "></i>
+				</div>
+				<div class="library_box">
+					<i class="library_img_1 "></i>
+				</div>
+				<div class="park_box">
+					<i class="park_img_1 ">
+					</i>
+				</div>
+				<div class="school_box">
+					<i class="school_img_1 "></i>
+				</div>
+				<div class="sandTable_box">
+					<i class="sandTable_img_1 "></i>
+				</div>
+			</section>
+			<!--/手动-->
+			<!--智能-->
+			<section class="fl clearfix left_con pr capacity_toggle" style="display: none;">
+				<p>
+					<i class="red_car_icon_1"></i>
+				</p>
+				<div class="dormitory_box">
+					<i class="dormitory_img "></i>
+				</div>
+				<div class="playground_box">
+					<i class="playground_img "></i>
+				</div>
+				<div class="library_box">
+					<i class="library_img "></i>
+				</div>
+				<div class="park_box">
+					<i class="park_img ">
+					</i>
+				</div>
+				<div class="school_box">
+					<i class="school_img "></i>
+				</div>
+				<div class="sandTable_box">
+					<i class="sandTable_img "></i>
+				</div>
+			</section>
+			<!--/智能-->
+			<section class="fr right_con">
+				<div class="title">
+					<a class="back fl"></a>
+					<span>智能路灯</span>
+				</div>
+				<div class="control clearfix">
+					<ul>
+						<li class="fl button_on">手动</li>
+						<li class="fr mind_btn">智能</li>
+					</ul>
+					<div class="manual">
+						<a class="control_b off"></a>
+						<dl class="clearfix">
+							<dd class="chepai">1</dd>
+							<dd>2</dd>
+							<br />
+							<dt>
+								<p class="fl">车牌号：000001</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：000002</p>
+								<p class="fl">车辆类型：私家车</p>
+							</dt>
+						</dl>
+						<div class="menu2">
+							<a class="mr20 enter_sandtable">进入沙盘</a>
+							<a>退出沙盘</a>
+						</div>
+					</div>
+					<div class="auto">
+						<dl class="clearfix" style="margin-top: 151px;">
+							<dd class="chepai">1</dd>
+							<dd>2</dd>
+							<br />
+							<dt>
+								<p class="fl">车牌号：000001</p>
+								<p class="fl">车辆数：3/26</p>
+							</dt>
+							<dt style="display: none;">
+								<p class="fl">车牌号：100001</p>
+								<p class="fl">车辆数：3/26</p>
+							</dt>
+						</dl>
+						<div class="menu2">
+							<a class="mr20 enter_sandtable">进入沙盘</a>
+							<a>退出沙盘</a>
+						</div>
+					</div>
+				</div>				
+			</section>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+        	$(".control li").click(function(){
+		        $(".control li").eq($(this).index()).addClass("button_on").siblings().removeClass('button_on');
+				$(".control>div").hide().eq($(this).index()).show();
+			});
+			/*路灯自动开关*/
+			$(".manual .control_b").click(function(){
+			/*	$(this).toggleClass("on");*/
+				if($(this).hasClass('on')){
+					$('.dormitory_img_1').removeClass('dormitory_img_1_hover');
+					$('.playground_img_1').removeClass('playground_img_1_hover');
+					$('.library_img_1').removeClass('library_img_1_hover');
+					$('.park_img_1').removeClass('park_img_1_hover');
+					$('.school_img_1').removeClass('school_img_1_hover');
+					$('.sandTable_img_1').removeClass('sandTable_img_1_hover');
+					$(this).removeClass('on');
+				}else{
+					$('.dormitory_img_1').addClass('dormitory_img_1_hover');
+					$('.playground_img_1').addClass('playground_img_1_hover');
+					$('.library_img_1').addClass('library_img_1_hover');
+					$('.park_img_1').addClass('park_img_1_hover');
+					$('.school_img_1').addClass('school_img_1_hover');
+					$('.sandTable_img_1').addClass('sandTable_img_1_hover');
+					$(this).addClass('on');
+				}
+			});
+			$(".manual dd").click(function(){
+		        $(".manual dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".manual dt").hide().eq($(this).index()).show();
+			});
+			$(".auto dd").click(function(){
+		        $(".auto dd").eq($(this).index()).addClass("chepai").siblings().removeClass('chepai');
+				$(".auto dt").hide().eq($(this).index()).show();
+			});
+		});
+		/*小车运动,手动路灯*/
+		function  animate_1() {
+			var $car = $('.red_car_icon');
+			$car.animate({left:670},4000);
+			$car.animate({deg:90},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({left:"670px",top:"760px"},4000);
+			$car.animate({deg:180},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({left:"10px",top:"760px"},4000);
+			$car.animate({deg:270},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			});
+			$car.animate({left:"5px",top:"15px"},4000);
+			$car.animate({deg:360},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({deg:0},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:0
+			})
+		}
+		//智能
+		function  animate() {
+			var $car = $('.red_car_icon_1');
+			$car.animate({left:670},{duration:4000,step:function(){
+				var that = this;
+				if(parseInt(that.style.left)<=250){
+					$('.dormitory_img').addClass('dormitory_hover');
+				}else if(parseInt(that.style.left)>=250&&parseInt(that.style.left)<=670){
+					$('.dormitory_img').removeClass('dormitory_hover');
+					$('.park_img').addClass('park_hover');
+				}
+			}});
+			$car.animate({deg:90},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({left:"670px",top:"760px"},{duration:4000,step:function(){
+				var that = this;
+				if(parseInt(that.style.top)<=250){
+					$('.park_img').addClass('park_hover');
+				}else if(parseInt(that.style.top)>=250&&parseInt(that.style.top)<=530){
+					$('.school_img').addClass('school_hover');
+					$('.park_img').removeClass('park_hover');
+				}else if(parseInt(that.style.top)>=450&&parseInt(that.style.top)<=760){
+					$('.school_img').removeClass('school_hover');
+					$('.sandTable_img').addClass('sandTable_hover');
+				}
+			}});
+			$car.animate({deg:180},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({left:"10px",top:"760px"},{duration:4000,step:function(){
+				var that = this;
+				if(parseInt(that.style.left)<=230){
+					$('.sandTable_img').removeClass('sandTable_hover');
+					$('.library_img').addClass('library_hover');
+				}
+			}});
+			$car.animate({deg:270},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			});
+			$car.animate({left:"5px",top:"15px"},{duration:4000,step:function(){
+				var that = this;
+				if(parseInt(that.style.top)>=260&&parseInt(that.style.top)<=500){
+					$('.library_img').removeClass('library_hover');
+					$('.playground_img').addClass('playground_hover');
+				}else if(parseInt(that.style.top)<=260){
+					$('.playground_img').removeClass('playground_hover');
+					$('.dormitory_img').addClass('dormitory_hover');
+				}
+			}});
+			$car.animate({deg:360},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:1000
+			})
+			$car.animate({deg:0},{
+				step:function(n,fx){
+					$(this).css('transform','rotate('+n+'deg)');
+				},
+				duration:0
+			})
+		}
+		$('.enter_sandtable').on('click',function(){
+			setInterval(animate,100);
+			setInterval(animate_1,100);
+		})
+		//智能
+		$('.mind_btn').on('click',function(){
+			$(".hand_toggle").hide();
+			$(".capacity_toggle").show();
+		})
+		//手动
+		$('.button_on').on('click',function(){
+			$(".hand_toggle").show();
+			$(".capacity_toggle").hide();
+		})
+	</script>
+</html>
